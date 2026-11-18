@@ -1,11 +1,11 @@
-.venv/
+.venv
+venv/
 __pycache__/
-*.pyc
 .env
+.env.*
 .ipynb_checkpoints/
-
+.pytest_cache/
+.vscode/
 data/raw/*
 data/processed/*
-
-.pytest_cache/
-.DS_Store
+*.pyc
