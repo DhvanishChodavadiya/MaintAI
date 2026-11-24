@@ -43,3 +43,37 @@ def split_dataset(X, y, test_size=0.2, random_state=42):
         random_state=random_state,
         stratify=y
     )
+
+
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+
+def create_preprocessor():
+    """
+    Create a preprocessing pipeline for numerical
+    and categorical features.
+    """
+
+    numerical_transformer = StandardScaler()
+
+    categorical_transformer = OneHotEncoder(
+        handle_unknown="ignore"
+    )
+
+    preprocessor = ColumnTransformer(
+        transformers=[
+            (
+                "num",
+                numerical_transformer,
+                NUMERIC_FEATURES
+            ),
+            (
+                "cat",
+                categorical_transformer,
+                CATEGORICAL_FEATURES
+            )
+        ]
+    )
+
+    return preprocessor
+
